@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nguyễn Bảo Nam</title>
+<style>
+  :root{
+    --field:#0c1f17;
+    --field-glow:#173a28;
+    --crimson:#8a2a2a;
+    --crimson-deep:#5e1a1a;
+    --cream:#f4ede0;
+    --ink:#241d16;
+    --ink-soft:#7a6f5e;
+    --line:#e3d8c4;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background:
+      radial-gradient(circle at 50% 0%, var(--field-glow), var(--field) 60%);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:60px 20px;
+  }
+
+  /* ===== CARD ===== */
+  .card{
+    width:100%;
+    max-width:420px;
+    background:var(--cream);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 30px 60px rgba(0,0,0,0.45);
+  }
+
+  /* ---- top banner ---- */
+  .banner{
+    background:linear-gradient(135deg, var(--crimson) 0%, var(--crimson-deep) 100%);
+    padding:22px 26px 60px;
+    position:relative;
+    color:#fff;
+  }
+
+  .banner .no{
+    font-size:0.75rem;
+    letter-spacing:2px;
+    color:rgba(255,255,255,0.7);
+  }
+
+  .banner .school{
+    font-size:0.78rem;
+    color:rgba(255,255,255,0.85);
+    margin-top:4px;
+  }
+
+  /* ---- photo ---- */
+  .photo-wrap{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:var(--cream);
+    padding:5px;
+    position:absolute;
+    left:50%;
+    bottom:-55px;
+    transform:translateX(-50%);
+    box-shadow:0 10px 24px rgba(0,0,0,0.35);
+  }
+
+  .photo-wrap .inner{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    overflow:hidden;
+    background:var(--crimson-deep);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--cream);
+    font-weight:700;
+    font-size:2.2rem;
+  }
+
+  .photo-wrap .inner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  /* ---- name block ---- */
+  .name-block{
+    text-align:center;
+    padding:66px 24px 20px;
+  }
+
+  .name-block h1{
+    font-size:1.55rem;
+    color:var(--ink);
+    font-weight:800;
+    letter-spacing:0.5px;
+  }
+
+  .name-block .role{
+    font-size:0.8rem;
+    color:var(--crimson);
+    font-weight:600;
+    letter-spacing:1.5px;
+    margin-top:4px;
+    text-transform:uppercase;
+  }
+
+  /* ---- perforated divider ---- */
+  .stub-line{
+    position:relative;
+    height:1px;
+    border-top:2px dashed var(--line);
+    margin:0 0 4px;
+  }
+
+  .stub-line::before, .stub-line::after{
+    content:"";
+    position:absolute;
+    top:-11px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:var(--field);
+  }
+
+  .stub-line::before{ left:-31px; }
+  .stub-line::after{ right:-31px; }
+
+  /* ---- stats table ---- */
+  .stats{
+    padding:22px 28px 8px;
+  }
+
+  .stat-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:11px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .stat-row:last-child{ border-bottom:none; }
+
+  .stat-row .label{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    letter-spacing:0.3px;
+  }
+
+  .stat-row .value{
+    font-size:0.95rem;
+    font-weight:700;
+    color:var(--ink);
+    text-align:right;
+  }
+
+  /* ---- skill meters (interests) ---- */
+  .skills{
+    padding:8px 28px 30px;
+  }
+
+  .skills h3{
+    font-size:0.72rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+
+  .skill{
+    margin-bottom:14px;
+  }
+
+  .skill .top-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:0.88rem;
+    color:var(--ink);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+
+  .skill .top-row .icon{
+    margin-right:6px;
+  }
+
+  .meter{
+    height:8px;
+    background:var(--line);
+    border-radius:99px;
+    overflow:hidden;
+  }
+
+  .meter .fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--crimson-deep), var(--crimson));
+    border-radius:99px;
+  }
+
+  /* ---- footer strip ---- */
+  .card-footer{
+    background:var(--ink);
+    color:rgba(244,237,224,0.65);
+    text-align:center;
+    font-size:0.72rem;
+    letter-spacing:0.5px;
+    padding:14px;
+  }
+
+  .card-footer strong{ color:var(--cream); }
+</style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="banner">
+      <div class="no">MSSV · 24100179</div>
+      <div class="school">Đại học Phenikaa — Công nghệ thông tin</div>
+
+      <div class="photo-wrap">
+        <div class="inner"><img src="avatar.jpg" alt="Ảnh đại diện Nguyễn Bảo Nam"></div>
+      </div>
+    </div>
+
+    <div class="name-block">
+      <h1>Nguyễn Bảo Nam</h1>
+      <p class="role">Sinh viên Công nghệ thông tin</p>
+    </div>
+
+    <div class="stub-line"></div>
+
+    <div class="stats">
+      <div class="stat-row">
+        <span class="label">Mã sinh viên</span>
+        <span class="value">24100179</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Ngày sinh</span>
+        <span class="value">16/10/2006</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Giới tính</span>
+        <span class="value">Nam</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Trường</span>
+        <span class="value">Đại học Phenikaa</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Ngành</span>
+        <span class="value">Công nghệ thông tin</span>
+      </div>
+    </div>
+
+    <div class="skills">
+      <h3>Sở thích &amp; Sở trường</h3>
+
+      <div class="skill">
+        <div class="top-row"><span><span class="icon">⚽</span>Sở thích — Đá bóng</span></div>
+        <div class="meter"><div class="fill" style="width:88%"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="top-row"><span><span class="icon">🏸</span>Sở trường — Cầu lông</span></div>
+        <div class="meter"><div class="fill" style="width:95%"></div></div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      © 2026 — <strong>Nguyễn Bảo Nam</strong> · Bài tập thực hành Web Basics
+    </div>
+
+  </div>
+
+</body>
+</html>
